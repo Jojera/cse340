@@ -17,3 +17,6 @@ node_modules
 
 #README file added as required
 README.md 
+
+#pnpm-lock.yaml file should be ignored as it tends to get so loaded
+pnpm-lock.yaml
