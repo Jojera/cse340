@@ -3,14 +3,14 @@
         {
             "pgOptions": {
                 "ssl": {
-                    "rejectUnauthorized": true
+                    "rejectUnauthorized": false
                 }
             },
             "previewLimit": 50,
             "server": "localhost",
             "driver": "PostgreSQL",
             "name": "Render",
-            "connectString": "postgresql://cse340:sz2wRwmy4mvSdS0I47tBp5VerWfB8w80@dpg-d1igsr3ipnbc73boffqg-a.frankfurt-postgres.render.com/cse340_r3n3"
+            "connectString": "postgresql://cse340:oP0NVZnlRbtP3F3JcEG8vjUdPvZjltN9@dpg-d1qftoq4d50c7398g17g-a.frankfurt-postgres.render.com/cse340_p7l0"
         }
     ]
 }
