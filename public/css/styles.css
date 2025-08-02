@@ -28,6 +28,7 @@
 
 #dynamic-nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   list-style: none;
   background-color: black;
@@ -44,20 +45,6 @@
   text-decoration: underline;
 } 
 
-/* nav ul {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  background-color: black;
-  color: white;
-  padding: 20px;
-}
-
-nav li {
-  cursor: pointer;
-}
-
-*/
 
 .hero-container {
   position: relative;
@@ -173,6 +160,119 @@ hr {
   margin: auto;
 }
 
+.notice {
+  list-style: none;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.notice-success {
+  list-style: none;
+  font-style: italic;
+  font-weight: bold;
+  color: green;
+} 
+
+.validation-notice {
+  font-style: italic;
+  font-weight: bold;
+  color: red;
+}
+
+form {
+    background-color: #d0f0ff;
+    width: 50%;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"], 
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 3px solid #ccc;
+    outline: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  font-family: 'Roboto', serif;
+}
+
+select:focus:invalid {
+  border-color: red;
+}
+
+select:focus:valid {
+  border-color: green;
+}
+
+textarea:focus:invalid {
+  border-color: red;
+}
+
+textarea:focus:valid {
+  border-color: green;
+}
+
+input:focus:invalid {
+  border-color: red;
+ }
+
+input:focus:valid {
+  border-color: green;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .register-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-class-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    /* width: 100%; */
+    background-color: #0041a8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form p, form a {
+  text-align: center;
+}
+
+.new-feature-links {
+  margin-left: 1rem;
+  padding: 10px;
+}
+
 @media (min-width: 768px) {
   html {
     background-image: url(../images/site/checkerboard.jpg);
@@ -206,7 +306,7 @@ hr {
   #inv-display {
     margin: 1rem auto;
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     list-style: none;
     gap: 20px;
   }
