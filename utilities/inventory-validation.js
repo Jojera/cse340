@@ -128,7 +128,7 @@ validate.checkNewVehicleData = async (req, res, next) => {
         let list = await utilities.buildClassificationList(classification_id)
         res.render("./inventory/add-inventory", {
             errors,
-            title: " ",
+            title: "Add New Classification Again😢",
             nav: null,
             list,
             classification_id,
