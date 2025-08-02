@@ -118,7 +118,7 @@ figcaption {
 #inv-display li {
   border: 1px solid beige;
   border-radius: 5px;
-  box-shadow: 0px 10px 20px 0px rgb(241, 239, 239);
+  box-shadow: 10px 10px 20px 5px rgb(241, 239, 239);
   text-align: center;
   list-style: none;
   padding-bottom: 10px;
@@ -309,6 +309,19 @@ form p, form a {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     list-style: none;
     gap: 20px;
+  }
+
+  #inv-display li {
+    position: relative;
+    height: 400px;
+  }
+
+  .namePrice {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    position: absolute;
+    top: 60%
   }
 
   #inv-details {
