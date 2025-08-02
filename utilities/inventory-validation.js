@@ -54,7 +54,7 @@ validate.addInventoryRules = () => {
             .trim()
             .escape()
             .notEmpty()
-            .matches(/^[A-Za-z]{3}$/)
+            .isLength({ min: 3 })
             .withMessage("Provide the vehicle's make as required."),
 
         // the model is required
@@ -62,7 +62,7 @@ validate.addInventoryRules = () => {
             .trim()
             .escape()
             .notEmpty()
-            .matches(/^[A-Za-z]{3}$/)
+            .isLength({ min: 3 })
             .withMessage("Provide the vehicle's model as required."),   
             
         // the description is required
