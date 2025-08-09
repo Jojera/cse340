@@ -45,6 +45,10 @@
   text-decoration: underline;
 } 
 
+#header-slash {
+  font-size: x-large;
+  color: #0041a8;
+}
 
 .hero-container {
   position: relative;
@@ -240,22 +244,9 @@ input:focus:valid {
   align-items: center;
 }
 
-/* .register-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.new-class-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
 form button {
     margin-top: 20px;
     padding: 12px 20px;
-    /* width: 100%; */
     background-color: #0041a8;
     color: white;
     border: none;

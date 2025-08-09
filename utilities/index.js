@@ -1,4 +1,6 @@
 const invModel = require("../models/inventory-model")
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 const Util = {}
 
 /* **
@@ -100,6 +102,63 @@ Util.buildClassificationList = async function (classification_id = null) {
     return classificationList
 }  
 
+/* **
+ * Middleware to check token validity
+ * **/
+Util.checkJWTToken = (req, res, next) => {
+  if (req.cookies.jwt) {
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (err) {
+          req.flash("Please log in")
+          res.clearCookie("jwt")
+          res.locals.loggedin = false
+          return res.redirect("/account/login")
+        }
+        res.locals.accountData = accountData
+        res.locals.loggedin = true
+        next()
+      }
+    )
+  } else {
+    res.locals.loggedin = false
+    next()
+  }
+}
+
+/* **
+ * Check Login
+ * **/
+Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("validation-notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
+/* **
+ * Check Account type
+ * **/
+Util.checkAccountType = (req, res, next) => {
+  const accountData = res.locals.accountData
+  // if no user data, login is required to access this view
+  if (!accountData) {
+    req.flash("validation-notice", "Please Log in to continue.")
+    return res.redirect("/account/login")
+  }
+  
+  // check the account type
+  if (accountData.account_type === "Employee" || accountData.account_type === "Admin") {
+    return next()
+  } else{
+    req.flash("validation-notice", "You do not have the permission to access this page.")
+    return res.redirect("/account/login")
+  }
+}
 
 /* **
  * Middleware For Handling Errors

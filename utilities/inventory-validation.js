@@ -71,7 +71,21 @@ validate.addInventoryRules = () => {
             .escape()
             .notEmpty()
             .withMessage("Provide a description for the vehicle."),    
+    
+        // the vehicle image is required    
+        body("inv_image")
+            .trim()
+            .escape()
+            .notEmpty()
+            .withMessage("Provide an image for the vehicle."),  
 
+        // the thumbnail is required    
+        body("inv_thumbnail")
+            .trim()
+            .escape()
+            .notEmpty()
+            .withMessage("Provide a thumbnail for the vehicle."),       
+                    
         // the price is required    
         body("inv_price")
             .trim()
@@ -115,6 +129,8 @@ validate.checkNewVehicleData = async (req, res, next) => {
         inv_make,
         inv_model,
         inv_description,
+        inv_image,
+        inv_thumbnail,
         inv_price,
         inv_year,
         inv_miles,
@@ -135,6 +151,50 @@ validate.checkNewVehicleData = async (req, res, next) => {
             inv_make,
             inv_model,
             inv_description,
+            inv_image,
+            inv_thumbnail,
+            inv_price,
+            inv_year,
+            inv_miles,
+            inv_color,
+        })
+        return
+    }
+    next()
+}
+
+validate.checkEditVehicleData = async (req, res, next) => {
+    const { 
+        inv_id,
+        classification_id,
+        inv_make,
+        inv_model,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_year,
+        inv_miles,
+        inv_color
+    } = req.body
+
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        let list = await utilities.buildClassificationList(classification_id)
+        res.render("./inventory/edit-inventory", {
+            errors,
+            title: "Edit " + inv_make + " " + inv_model,
+            nav,
+            list,
+            inv_id,
+            classification_id,
+            inv_make,
+            inv_model,
+            inv_description,
+            inv_image,
+            inv_thumbnail,
             inv_price,
             inv_year,
             inv_miles,
